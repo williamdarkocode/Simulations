@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Sight
+comment1.params=person\ mapOfLife
+comment1.target=Sight(Organism,\ java.util.Map)
+comment2.params=
+comment2.target=void\ resetSight()
+comment3.params=
+comment3.target=java.util.Map\ getInSight()
+comment4.params=
+comment4.target=double\ getScope()
+comment5.params=
+comment5.target=void\ calibrate()
+comment6.params=delta
+comment6.target=void\ expandScope(double)
+numComments=7

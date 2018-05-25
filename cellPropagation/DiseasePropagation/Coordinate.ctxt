@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Coordinate
+comment1.params=x\ y
+comment1.target=Coordinate(double,\ double)
+comment2.params=
+comment2.target=double\ getX()
+comment3.params=
+comment3.target=double\ getY()
+comment4.params=
+comment4.target=double[]\ getCoord()
+comment5.params=delta
+comment5.target=void\ moveCoord(double)
+comment6.params=xDelta\ yDelta
+comment6.target=void\ moveCoord(double,\ double)
+comment7.params=point1\ point2
+comment7.target=double\ computeDistance(Coordinate,\ Coordinate)
+numComments=8

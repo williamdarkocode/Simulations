@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Simulation
+comment1.params=domain\ range\ gridSize
+comment1.target=Simulation(int,\ int,\ int)
+comment2.params=width\ height
+comment2.target=void\ setGrid(int,\ int)
+comment3.params=
+comment3.target=int\ getDomain()
+comment4.params=
+comment4.target=int\ getRange()
+comment5.params=r
+comment5.target=void\ setRange(int)
+comment6.params=d
+comment6.target=void\ setDomain(int)
+comment7.params=delta
+comment7.target=void\ expandGraph(double)
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9
