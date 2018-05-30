@@ -14,6 +14,7 @@ public interface Organism
     
     Coordinate getPosition();
     
+    //void setState();
     
     void instantiateSelf();
     

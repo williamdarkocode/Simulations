@@ -54,10 +54,11 @@ public class Simulation {
         StdDraw.setPenRadius(0.05);
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(100,100,10);
-        //StdDraw.show();
-        Person p = new Person(350, 350, "RESCUE", life, 100, StdDraw.BLUE, 5, bounds);
-        Person v = new Person(500,500, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
-        Person n = new Person(500,600, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
+        StdDraw.show();
+        Person p = new Person(350, 350, "RESCUE", 5, bounds);
+        
+        //Person v = new Person(500,500, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
+        //Person n = new Person(500,600, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
         
     }
 }

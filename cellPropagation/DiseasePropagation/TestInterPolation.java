@@ -44,11 +44,14 @@ public class TestInterPolation
     
     @Test
     public void testCartesian() {
+        /*
         int[] bounds = new int[] {1000, 1000};
-        Person testPerson = new Person(200,200, "Regular", new HashMap<Coordinate,Organism>(), 10, StdDraw.BLUE, 10, bounds);
+        Person testPerson = new Person(200,200, "Regular", new HashMap<Coordinate,Organism>(),StdDraw.BLUE, 10, bounds);
         for(int i = 0; i < 50; i++) {
             Coordinate cart = testPerson.cartesianTarget();
             testPerson = new Person(cart.getX(),cart.getY(), "Regular", new HashMap<Coordinate,Organism>(), 10, StdDraw.BLUE,10, bounds);
+            
         }
+        */
     }
 }

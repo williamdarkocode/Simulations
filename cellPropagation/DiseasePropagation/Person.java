@@ -2,47 +2,29 @@ import java.util.*;
 import java.awt.Color;
 
 public class Person implements Organism {
-    //colours
 
-    public static final Color BLACK      = Color.BLACK;
-    public static final Color BLUE       = Color.BLUE;
-    public static final Color CYAN       = Color.CYAN;
-    public static final Color DARK_GRAY  = Color.DARK_GRAY;
-    public static final Color GRAY       = Color.GRAY;
-    public static final Color GREEN      = Color.GREEN;
-    public static final Color LIGHT_GRAY = Color.LIGHT_GRAY;
-    public static final Color MAGENTA    = Color.MAGENTA;
-    public static final Color ORANGE     = Color.ORANGE;
-    public static final Color PINK       = Color.PINK;
-    public static final Color RED        = Color.RED;
-    public static final Color WHITE      = Color.WHITE;
-    public static final Color YELLOW     = Color.YELLOW;
-
-    //colours
 
     private double xPos;
     private double yPos;
     private Coordinate position;
     private double velocity;
     private Sight eye;
-    private String typeOfPerson;
     private boolean isInfected;
     private boolean isRescue;
     private boolean isSuceptible;
     private boolean isDead;
     private boolean isAlive;
     private String type;
-    private Map<Coordinate, Organism> mapOfLife;
     private String colour;
     private double[] direction;
     private int radius;
     private int[] worldBounds;
-    private double velocityConstant = 5.0;
+    private double velocityConstant;
     private double healthPercentage = 100.0;
 
-    public Person(double x, double y, String type, Map<Coordinate, Organism> mapOfLife, double velocity, Color c, int radius, int[] worldBounds) {
+    public Person(double x, double y, String type, int radius, int[] worldBounds) {
+        this.velocity = 100.0;
         direction = new double[] {0.0, Math.PI*2};
-        this.mapOfLife = mapOfLife;
 
         this.xPos = x;
         this.yPos = y;
@@ -50,43 +32,86 @@ public class Person implements Organism {
 
         this.type = type;
 
-        this.eye = new Sight(this, mapOfLife);
-
-        this.isInfected = false;
-        this.isDead = false;
-        this.isAlive = !this.isDead;
-        this.isSuceptible = false;
-        this.isRescue = this.type.equals("RESCUE");
-
-        this.velocity = velocity;
         this.radius = radius;
         this.worldBounds = worldBounds;
+        
+        setInitialState();
+        
         instantiateSelf();
         move();
     }
-
-    public String getColour() {
-        if(this.type.equals("RESCUE")) {
-            this.colour = "BLUE";
-            return "BLUE";
+    
+    
+    public void changeStateInfected() {
+        this.isInfected = true;
+    }
+    
+    public void changeStateSuceptible() {
+        this.isSuceptible = true;
+    }
+    
+    public void changeStateDead() {
+        this.isDead = true;
+    }
+    
+    public void setInitialState() {
+        switch(this.type) {
+            case "RESCUE":
+                this.colour = "BLUE";
+                this.isInfected = false;
+                this.isSuceptible = false;
+                this.isDead = false;
+                this.isAlive = true;
+                this.velocityConstant = 10.0;
+                this.eye = new Sight(this, new HashMap<Coordinate, Organism>());
+                this.eye.expandScope(this.radius);
+                break;
+            case "REGULAR":
+                this.colour = "GREEN";
+                this.isInfected = false;
+                this.isSuceptible = false;
+                this.isDead = false;
+                this.isAlive = true;
+                this.velocityConstant = 5;
+                this.eye = new Sight(this, new HashMap<Coordinate, Organism>());
+                break;
         }
-        if(this.type.equals("REGULAR") && !this.isInfected && !this.isSuceptible && this.isAlive) {
-            this.colour = "GREEN";
-            return "GREEN";
+    }
+    
+    public void updateColour() {
+        if(!this.type.equals("RESCUE")) {
+            if(this.isInfected) {
+                this.colour = "RED";
+                StdDraw.setPenColor(StdDraw.RED);
+            }
+            else if(this.isSuceptible) {
+                this.colour = "YELLOW";
+                StdDraw.setPenColor(StdDraw.YELLOW);
+            }
+            else if(this.isDead) {
+                this.colour = "BLACK";
+                StdDraw.setPenColor(StdDraw.BLACK);
+            }
+            else {
+                this.colour = "GREEN";
+                StdDraw.setPenColor(StdDraw.GREEN);
+            }
         }
-        return "GREEN";
     }
 
-    public void instantiateSelf() {
-        if(this.type.equals("RESCUE")) {
-            StdDraw.setPenColor(this.BLUE);
-            this.colour = "BLUE";
-        }
-        if(this.type.equals("REGULAR") && !this.isInfected && !this.isSuceptible && this.isAlive) {
-            StdDraw.setPenColor(this.GREEN);
-            this.colour = "GREEN";
-        }
+    public String getColour() {
+        updateColour();
+        return this.colour;
+    }
+    
+    
 
+    
+    
+
+    public void instantiateSelf() {
+        //colour set goes here
+        updateColour();
         StdDraw.clear();
         StdDraw.setPenRadius(0.05);
 
@@ -181,7 +206,7 @@ public class Person implements Organism {
         }
 
         int numIntervals = (int)(Math.abs(target.getX()-this.position.getX())/velocity);
-        double deltaX = Math.abs(target.getX()-this.xPos)/velocity * 5; // multiply this result by some rate that exponentially grows based on health;
+        double deltaX = Math.abs(target.getX()-this.xPos)/velocity * this.velocityConstant; // multiply this result by some rate that exponentially grows based on health;
         double[] slopeIntercept = computeSlope(this.position, target);
         /*
 

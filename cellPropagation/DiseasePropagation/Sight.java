@@ -19,11 +19,18 @@ public class Sight {
         StdDraw.setPenRadius(0.005);
         //Color c = this.person.getColour();
         if(this.person.getColour().equals("BLUE")) {
-            StdDraw.setPenColor(Color.getColor(this.person.getColour()));
+            StdDraw.setPenColor(Color.BLUE);
         }
-        else  {
-            StdDraw.setPenColor(Color.getColor(this.person.getColour()));
+        if(this.person.getColour().equals("GREEN")) {
+            StdDraw.setPenColor(Color.GREEN);
         }
+        if(this.person.getColour().equals("YELLOW")) {
+            StdDraw.setPenColor(Color.YELLOW);
+        }
+        if(this.person.getColour().equals("BLACK")) {
+            StdDraw.setPenColor(Color.BLACK);
+        }
+        
         
         StdDraw.circle(this.person.getPosition().getX(), this.person.getPosition().getY(), this.radius);
         StdDraw.show();
