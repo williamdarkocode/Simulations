@@ -1,6 +1,6 @@
 import java.util.*;
 import java.awt.Color;
-public class Simulation {
+public class Simulation{
     private int domain;
     private int range;
     private int gridSize;
@@ -55,7 +55,11 @@ public class Simulation {
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.filledCircle(100,100,10);
         StdDraw.show();
-        Person p = new Person(350, 350, "RESCUE", 5, bounds);
+        
+
+        
+        //StdDraw.show();
+        //Person p2 = new Person(350, 350, "REGULAR", 5, bounds);
         
         //Person v = new Person(500,500, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
         //Person n = new Person(500,600, "Regular", life, 50, StdDraw.GREEN, 10, bounds);

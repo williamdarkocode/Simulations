@@ -3,7 +3,6 @@ import java.awt.Color;
 
 public class Person implements Organism {
 
-
     private double xPos;
     private double yPos;
     private Coordinate position;
@@ -34,50 +33,52 @@ public class Person implements Organism {
 
         this.radius = radius;
         this.worldBounds = worldBounds;
+
         
         setInitialState();
-        
+
         instantiateSelf();
         move();
     }
+
     
-    
+
     public void changeStateInfected() {
         this.isInfected = true;
     }
-    
+
     public void changeStateSuceptible() {
         this.isSuceptible = true;
     }
-    
+
     public void changeStateDead() {
         this.isDead = true;
     }
-    
+
     public void setInitialState() {
         switch(this.type) {
             case "RESCUE":
-                this.colour = "BLUE";
-                this.isInfected = false;
-                this.isSuceptible = false;
-                this.isDead = false;
-                this.isAlive = true;
-                this.velocityConstant = 10.0;
-                this.eye = new Sight(this, new HashMap<Coordinate, Organism>());
-                this.eye.expandScope(this.radius);
-                break;
+            this.colour = "BLUE";
+            this.isInfected = false;
+            this.isSuceptible = false;
+            this.isDead = false;
+            this.isAlive = true;
+            this.velocityConstant = 10.0;
+            this.eye = new Sight(this, new HashMap<Coordinate, Organism>());
+            this.eye.expandScope(this.radius);
+            break;
             case "REGULAR":
-                this.colour = "GREEN";
-                this.isInfected = false;
-                this.isSuceptible = false;
-                this.isDead = false;
-                this.isAlive = true;
-                this.velocityConstant = 5;
-                this.eye = new Sight(this, new HashMap<Coordinate, Organism>());
-                break;
+            this.colour = "GREEN";
+            this.isInfected = false;
+            this.isSuceptible = false;
+            this.isDead = false;
+            this.isAlive = true;
+            this.velocityConstant = 5;
+            this.eye = new Sight(this, new HashMap<Coordinate, Organism>());
+            break;
         }
     }
-    
+
     public void updateColour() {
         if(!this.type.equals("RESCUE")) {
             if(this.isInfected) {
@@ -103,12 +104,9 @@ public class Person implements Organism {
         updateColour();
         return this.colour;
     }
-    
-    
+
 
     
-    
-
     public void instantiateSelf() {
         //colour set goes here
         updateColour();
@@ -117,7 +115,7 @@ public class Person implements Organism {
 
         StdDraw.filledCircle(xPos,yPos,this.radius);
         this.eye.resetSight();
-        StdDraw.show();
+        //StdDraw.show();
     }
 
     public double getRadius() {
@@ -269,13 +267,8 @@ public class Person implements Organism {
     }
 
     public void move(){
-        /*
-        for(int i = 0; i  < 500; i++) {
         interpolate();
-        }*/
-
-        interpolate();
-        move();
+        //move();
     }
 
     public void checkNeighbours(){
