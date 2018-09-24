@@ -1,0 +1,68 @@
+Random walks
+- Flipping coin to determine direction to move; to "randomise movement" based
+on 50/50 probability of coin flip.
+- this will occur in a 2d setting
+
+- Object oriented programming
+- How to define rules that govern behaviour of objects an how to implement rules
+in code
+- Randomness, probability and Perlin randomise
+
+objects
+  - Design walker object that keeps track of its own data
+    (where it exists in plane) and could function in certain ways
+    such as draw self or take step
+
+general walker class:
+  class Walker {
+    int x;
+    int y;
+  }
+  only needs two instance variables because its only purpose is to move
+  according to the x or y axis.
+
+  Walker class with constructor and functions:
+    class Walker {
+      int x;
+      int y;
+
+      Walker() {
+        x=width/2;
+        y=height/2;
+        // these are initial or default settings of Walker object when
+        instantiated
+      }
+
+      void display() {
+        stroke(0) // display itself as white dot;
+        point(x, y); //position self at coordinate
+      }
+
+      void step() {
+        int choice = int(random(4)); //choose a random integer between 0-4
+        // but not including 4, and cast it to an integer
+
+        // now, using conditional statements, we decide where to move
+        //according to choice value. 0, left, 1 right, etc.
+      }
+
+    }
+
+
+    - Modifications to walker object.
+       - Current walker is only limited to 4 possible directions of movement
+       - But, each possible pixel at a single point has 8 possible
+          choices of movement.
+       - What we do is randomise so there are eight possible choices
+          - one way is to do a flip of 8 possible choices and 9nth of staying
+            in the same spot
+          - the other--better-- way is to randomise between a range -1 and 1,
+            and increment the y and x values accordingly
+
+
+
+   - Random counts
+      - have an empty array of integers starting out 0
+      - randomly choose an integer from range of 0, to arr.length
+      - at arr[RandomNumber] increment by one
+      - this shows the frequency of which each number is chosen.
