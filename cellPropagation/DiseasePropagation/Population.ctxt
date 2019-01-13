@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=Population
-comment1.params=total
-comment1.target=Population(int)
+comment1.params=total\ worldBounds
+comment1.target=Population(int,\ int[])
 numComments=2

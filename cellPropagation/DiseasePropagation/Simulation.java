@@ -58,11 +58,11 @@ public class Simulation{
         
 
         
-        //StdDraw.show();
-        //Person p2 = new Person(350, 350, "REGULAR", 5, bounds);
+        StdDraw.show();
+        Person p2 = new Person(350, 350, "REGULAR", 5, bounds);
         
-        //Person v = new Person(500,500, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
-        //Person n = new Person(500,600, "Regular", life, 50, StdDraw.GREEN, 10, bounds);
+        Person v = new Person(500,500, "Regular",  50, bounds);
+        Person n = new Person(500,600, "Regular",  50, bounds);
         
     }
 }
